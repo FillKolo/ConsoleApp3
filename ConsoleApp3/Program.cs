@@ -8,26 +8,34 @@ namespace ConsoleApp3
         static void Main(string[] args)
         {
             Console.WriteLine("Уважаемый пользователь моего мегокалькулятора (Семёныч). Прошу c пониманием к нему отнестись. Введите первое число");
-            string Razlogenie1 = Console.ReadLine();
 
-            bool Razlogenie2 = double.TryParse(Razlogenie1, out double PervoySchislo);
-            if (Razlogenie2 == false)
+            bool Razlogenie2 = false;
+            double PervoySchislo = 0;
+            while (!Razlogenie2)
             {
-                Console.WriteLine("Ох и сёмён задает задачки то");
+                string Razlogenie1 = Console.ReadLine();
+                Razlogenie2 = double.TryParse(Razlogenie1, out PervoySchislo);
+                if (Razlogenie2 == false)
+                {
+                    Console.WriteLine("В введенном значении не записано число, попробуйте еще раз");
+                }
             }    
 
             Console.WriteLine("Введите операцию, которую хотите произвести");
             char simvol = Convert.ToChar(Console.ReadLine());
 
             Console.WriteLine("Введите второе число, с помощью которого хотите пошаманить");
-            string Razlogenie3 = Console.ReadLine();
-
-            bool Razlogenie4 = double.TryParse(Razlogenie3, out double VtoroeScheslo);
-            if (Razlogenie4 == false)
+            bool Razlogenie4 = false;
+            double VtoroeScheslo = 0;
+            while (!Razlogenie4)
             {
-                Console.WriteLine("Ох и сёмён задает задачки то!!!!!!!!!!!!!!!!!!!");
+                string Razlogenie3 = Console.ReadLine();
+                Razlogenie4 = double.TryParse(Razlogenie3, out VtoroeScheslo);
+                if (Razlogenie4 == false)
+                {
+                    Console.WriteLine("В введенном значении не записано число, попробуйте еще раз");
+                }
             }
-
 
 
             switch (simvol)
@@ -46,9 +54,9 @@ namespace ConsoleApp3
                     break;
                 case '/':
                     {
-                        if (VtoroeScheslo <= 0)
+                        if (VtoroeScheslo == 0)
                         {
-                            Console.WriteLine("ЭЭэ нэ брат, на ноль или отрицательное число делить нельзя");
+                            Console.WriteLine("ЭЭэ нэ брат, на ноль  число делить нельзя");
                             break;
                         }
                         double Delenie = (PervoySchislo / VtoroeScheslo);
