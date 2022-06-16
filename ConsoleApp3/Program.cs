@@ -8,15 +8,27 @@ namespace ConsoleApp3
         static void Main(string[] args)
         {
             Console.WriteLine("Уважаемый пользователь моего мегокалькулятора (Семёныч). Прошу c пониманием к нему отнестись. Введите первое число");
-            string a = Console.ReadLine();
-            Console.WriteLine("Введите операцию, которую хотите произвести");
-            string b = Console.ReadLine();
-            Console.WriteLine("Введите второе число, с помощью которого хотите пошаманить");
-            string c = Console.ReadLine();
+            string Razlogenie1 = Console.ReadLine();
 
-            double PervoySchislo = Convert.ToDouble(a);
-            double VtoroeScheslo = Convert.ToDouble(c);
-            char simvol = Convert.ToChar(b);
+            bool Razlogenie2 = double.TryParse(Razlogenie1, out double PervoySchislo);
+            if (Razlogenie2 == false)
+            {
+                Console.WriteLine("Ох и сёмён задает задачки то");
+            }    
+
+            Console.WriteLine("Введите операцию, которую хотите произвести");
+            char simvol = Convert.ToChar(Console.ReadLine());
+
+            Console.WriteLine("Введите второе число, с помощью которого хотите пошаманить");
+            string Razlogenie3 = Console.ReadLine();
+
+            bool Razlogenie4 = double.TryParse(Razlogenie3, out double VtoroeScheslo);
+            if (Razlogenie4 == false)
+            {
+                Console.WriteLine("Ох и сёмён задает задачки то!!!!!!!!!!!!!!!!!!!");
+            }
+
+
 
             switch (simvol)
             {
@@ -42,7 +54,6 @@ namespace ConsoleApp3
                         double Delenie = (PervoySchislo / VtoroeScheslo);
                         Console.WriteLine(Delenie);
                     }
-
                     break;
                 default:
                     Console.WriteLine("Сори, бротишка, я пока умею делать только умножение, деление, выечатение да сложение. Если захочешь больше, то это только с практикой");
